@@ -28,7 +28,7 @@ namespace Sih.Web.Areas.Gestion.Controllers
             return View(lst);
         }
 
-        
+
 
         // GET: Gestion/Vol/Create
         public IActionResult AddOrUpdate(int id)
@@ -52,7 +52,7 @@ namespace Sih.Web.Areas.Gestion.Controllers
         {
             if (ModelState.IsValid)
             {
-                
+
                 if (volEntity.VolEntityId == 0)
                 {
                     await _context.Ajouter(volEntity);
@@ -66,7 +66,7 @@ namespace Sih.Web.Areas.Gestion.Controllers
             return View(volEntity);
         }
 
-        
+
 
         // POST: Gestion/Vol/Delete/5
         [HttpPost, ActionName("Delete")]
@@ -85,6 +85,5 @@ namespace Sih.Web.Areas.Gestion.Controllers
             }
         }
 
-        
     }
 }

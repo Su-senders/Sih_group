@@ -1,16 +1,21 @@
 ﻿@model IEnumerable<Sih.Entities.Localisation.RegionEntity>
-
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer Localizer
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Index</h1>
+<p class="titre">@Localizer["Liste des régions enregitrées"]</p>
+<br />
+<div>
+    <p>
+        <a asp-action="AddOrUpdate" class="btn btn-outline-primary">@Localizer["Nouveau"]</a>
+    </p>
+</div>
+<hr style="height:2px;background-color:midnightblue" />
 
-<p>
-    <a asp-action="AddOrUpdate">Create New</a>
-</p>
-<table class="table">
+<table class="table table-bordered table-striped table-hover">
     <thead>
         <tr>
             <th>
@@ -23,20 +28,20 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.CodeReg)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NomReg)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.RegionEntityId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.RegionEntityId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.RegionEntityId">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CodeReg)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NomReg)
+                </td>
+                <td>
+                    <a asp-action="AddOrUpdate" asp-route-id="@item.RegionEntityId" class="btn btn-primary mx-1"><i class="fa fa-edit"></i></a>
+                    <a asp-action="Delete" asp-route-id="@item.RegionEntityId" class="btn btn-danger mx-1" onclick="return confirm('@Localizer["Êtes-vous sûrs de vouloir supprimer cet enregistrement?"]')"><i class="fa fa-trash-alt"></i></a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

@@ -65,7 +65,7 @@ namespace Sih.Web.Areas.Gestion.Controllers
             return View(voyageEntity);
         }
 
-        
+
 
         // POST: Gestion/Voyage/Delete/5
         [HttpPost, ActionName("Delete")]
@@ -83,7 +83,5 @@ namespace Sih.Web.Areas.Gestion.Controllers
                 return NotFound();
             }
         }
-
-       
     }
 }

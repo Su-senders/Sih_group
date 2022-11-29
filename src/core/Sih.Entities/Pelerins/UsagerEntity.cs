@@ -27,10 +27,13 @@ namespace Sih.Entities.Pelerins
         public DateTime PassportDel { get; set; }
         [Required, Display(Name = "PassPort Expiration Date"), DataType(DataType.Date)]
         public DateTime PassportExp { get; set; }
-
         [Required, Display(Name = "Departure Town")]
         public string Townn { get; set; }
         [Required, Display(Name = "Nationality")]
         public string Nationality { get; set; }
+        [Required, Display(Name = "N° Tél")]
+        public string NumTel { get; set; }
+        [Required, Display(Name = "Email")]
+        public string Email { get; set; }
     }
 }

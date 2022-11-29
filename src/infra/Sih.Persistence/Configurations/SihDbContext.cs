@@ -33,7 +33,7 @@ namespace Sih.Persistence.Configurations
         //
         //
         //Gestion
-        public DbSet<AvionEntity> Avions { get; set; }
+      
         public DbSet<InscriptionEntity> Inscriptions { get; set; }
         public DbSet<PaiementEntity> Paiements { get; set; }
         public DbSet<PieceJointesEntity> PieceJointes { get; set; }

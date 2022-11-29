@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Sih.Persistence.Configurations;
 
 namespace Sih.Persistence.Configurations.Migrations
 {
     [DbContext(typeof(SihDbContext))]
-    partial class SihDbContextModelSnapshot : ModelSnapshot
+    [Migration("20221129093510_004")]
+    partial class _004
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -248,6 +250,24 @@ namespace Sih.Persistence.Configurations.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
+            modelBuilder.Entity("Sih.Entities.Gestion.AvionEntity", b =>
+                {
+                    b.Property<int>("AvionEntityId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("Capacite")
+                        .HasColumnType("int");
+
+                    b.Property<string>("NumAvion")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("AvionEntityId");
+
+                    b.ToTable("Avions");
+                });
+
             modelBuilder.Entity("Sih.Entities.Gestion.InscriptionEntity", b =>
                 {
                     b.Property<int>("InscriptionEntityId")
@@ -372,15 +392,6 @@ namespace Sih.Persistence.Configurations.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("Capacite")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("Datedepart")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Direction")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<int>("Numvol")
                         .HasColumnType("int");
 
@@ -403,6 +414,12 @@ namespace Sih.Persistence.Configurations.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("Datedepart")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Direction")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("UsagerEntityId")
                         .HasColumnType("int");
@@ -625,10 +642,6 @@ namespace Sih.Persistence.Configurations.Migrations
                     b.Property<DateTime>("DOBirth")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("Fname")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -642,10 +655,6 @@ namespace Sih.Persistence.Configurations.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Nationality")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("NumTel")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 

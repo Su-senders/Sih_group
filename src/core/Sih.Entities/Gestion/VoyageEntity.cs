@@ -9,7 +9,5 @@ namespace Sih.Entities.Gestion
         public int VoyageEntityId { get; set; }
         public int VolEntityId { get; set; }
         public int UsagerEntityId { get; set; }
-        public string Direction { get; set; }
-        public DateTime Datedepart { get; set; }
     }
 }

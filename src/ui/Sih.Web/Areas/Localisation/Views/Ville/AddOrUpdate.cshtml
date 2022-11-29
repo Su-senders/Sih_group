@@ -1,5 +1,6 @@
 ﻿@model Sih.Entities.Localisation.VilleEntity
-
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer Localizer
 @{
     ViewData["Title"] = "Create";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -14,7 +15,7 @@
         <form asp-action="AddOrUpdate">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="VilleEntityId" />
-            <div class="form-group">
+            <div class="form-group row">
                 <label asp-for="NomVille" class="control-label"></label>
                 <input asp-for="NomVille" class="form-control" />
                 <span asp-validation-for="NomVille" class="text-danger"></span>

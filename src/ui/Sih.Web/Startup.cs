@@ -56,13 +56,9 @@ namespace Sih.Web
             //
             //
             //Enums
-            //RAS
-            //
-            //
+           
             //Gestion
-            services.AddSingleton<IAvionApplication, AvionApplication>();
-            services.AddSingleton<IAvionDomain, AvionRepository>();
-            //
+          
             services.AddSingleton<IInscriptionApplication, InscriptionApplication>();
             services.AddSingleton<IInscriptionDomain, InscriptionRepository>();
             //
