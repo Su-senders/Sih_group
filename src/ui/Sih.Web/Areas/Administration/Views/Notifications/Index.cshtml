@@ -1,0 +1,192 @@
+﻿@model IEnumerable<Sih.Entities.Administration.NotificationsEntity>
+
+@using Sih.Web.Helper
+
+@{
+    ViewData["Title"] = @Localizer["Index"];
+
+    // definition des variable compteur
+    var i = 0;
+
+    // definition des variable de pagination
+
+    Pager pager = new Pager();
+    int pageNo = 0;
+
+    // definition des variable de la barre de progression
+    var valeur = 0;
+    var num = 100;
+    var denom = 100;
+    var numText = 100;
+
+    if (ViewBag.Pager != null)
+    {
+        pager = ViewBag.Pager;
+        pageNo = pager.CurrentPage;
+        num = (int)(pager.CurrentPage);
+        denom = (int)(pager.TotalItems);
+
+        if (pager.CurrentPage == pager.EndPage)
+        {
+            valeur = 100;
+            numText = pager.TotalItems;
+        }
+        else
+        {
+            valeur = 10000 * num / denom;
+            numText = 100 * pager.CurrentPage;
+        }
+    }
+}
+@*Passage de message à l'utilisateur'*@
+<partial name="~/Views/Shared/_StatusMessage.cshtml" model=@TempData["_StatusMessage"] />
+
+@*  Debut de la balise div permettant de faire la pagination *@
+
+<div class="container">
+    @if (pager.TotalPages > 0)
+    {
+        <ul class="pagination justify-content-end">
+            @if (pager.TotalPages > 1)
+            {
+                if (pager.CurrentPage != 1)
+                {
+                    <li class="page-item">
+                        <a class="page-link" asp-controller="Notifications" asp-action="Index" asp-route-pg="1"> « </a>
+                    </li>
+                    <li>
+                        <a class="page-link" asp-controller="Notifications" asp-action="Index" asp-route-pg="@(pager.CurrentPage-1)"> 	&lt;</a>
+                    </li>
+                }
+
+            }
+
+            @for (var pge = pager.StartPage; pge <= pager.EndPage; pge++)
+            {
+                <li class="page-item @(pge == pager.CurrentPage ? "active" : "") ">
+                    <a class="page-link" asp-controller="Notifications" asp-action="Index" asp-route-pg="@pge">@pge</a>
+                </li>
+            }
+
+            @if (pager.CurrentPage < pager.TotalPages)
+            {
+                <li class="page-item">
+                    <a class="page-link" asp-controller="Notifications" asp-action="Index" asp-route-pg="@(pager.CurrentPage+1)"> 	&gt; </a>
+                </li>
+                <li>
+                    <a class="page-link" asp-controller="Notifications" asp-action="Index" asp-route-pg="@(pager.TotalPages)">»</a>
+                </li>
+            }
+
+        </ul>
+    }
+</div>
+
+@*  Fin de la balise div permettant de faire la pagination *@
+
+<div class="card">
+    <div class="card-header bg-gradient-blue">
+        <div class="card-tools">
+            <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                <i class="fas fa-minus"></i>
+            </button>
+            <a asp-area="Helper" asp-controller="Office" asp-action="Index" class="btn btn-tool"><i class="fas fa-times"></i></a>
+        </div>
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body">
+        <table id="example1" class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>
+                        @Localizer["N°"]
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Titre)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Information)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.DateCreation)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.UserEmail)
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    i += 1;
+                    <tr>
+                        <td>
+                            @i
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Titre)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Information)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DateCreation)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.UserEmail)
+                        </td>
+                    </tr>
+                }
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th>
+                        @Localizer["N°"]
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Titre)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Information)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.DateCreation)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.UserEmail)
+                    </th>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+    <!-- /.card-body -->
+</div>
+<!-- /.card -->.
+
+@section Styles
+{
+    @{await Html.RenderPartialAsync("/Views/Shared/AdminLTE/_DataTableStyles.cshtml");}
+}
+
+@section Scripts
+{
+    @{await Html.RenderPartialAsync("/Views/Shared/AdminLTE/_DataTableScripts.cshtml");}
+}
+
+
+@section ContentHeader
+{
+    <div class="col-sm-6">
+        <h1>@Localizer["Logs"]</h1>
+    </div>
+    <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item">
+                <a asp-area="Helper" asp-controller="Office" asp-action="Index">
+                    Dashboard
+                </a>
+            </li>
+            <li class="breadcrumb-item active">@Localizer["Journal des opérations système"]</li>
+        </ol>
+    </div>
+}

@@ -1,0 +1,60 @@
+﻿body {
+
+}
+.titre{
+    font-size:1.3em;
+    font-weight:bolder;
+    text-align:center;
+    color: #007aff;
+    text-align:center;
+    text-decoration:wavy;
+    border-style:groove;
+    border-radius:15px;
+    /*background-color:#007aff;*/
+    
+}
+
+.titre1 {
+    font-weight: bold;
+    text-align: left;
+    border-style: groove;
+    border-radius: 15px;
+    background-color: #007aff;
+    /*  background-color: darkolivegreen;*/
+}
+
+
+.btn-site-menu {
+    font-size: 1em;
+    font-weight: bolder;
+}
+
+.table td {
+    padding: .28rem;
+    font-size: 0.91rem;
+    font-weight: 600;
+}
+
+.fa, .fas {
+    font-size: small;
+    padding-right: 2px;
+}
+
+.btn {
+    font-weight: 600;
+    padding: .06rem .3rem;
+    font-size: 0.8rem;
+}
+
+.my-select {
+    height: 1.8rem;
+    padding: .1rem .75rem;
+    font-size: 0.8rem;
+    font-weight: bolder;    
+}
+
+.btn-top {
+    height: 1.7rem;
+    padding: .09rem .3rem;
+}
+

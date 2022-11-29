@@ -1,0 +1,98 @@
+﻿@model IEnumerable<Sih.Entities.Pelerins.UsagerEntity>
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer Localizer
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<p class="titre">@Localizer["Liste des Pelerins enregitrés"]</p>
+<br />
+<div>
+    <p>
+        <a asp-action="AddOrUpdate" class="btn btn-outline-primary">@Localizer["Nouveau"]</a>
+    </p>
+</div>
+<hr style="height:2px;background-color:midnightblue" />
+
+<table class="table table-bordered table-striped table-hover">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Fname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Mname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Lname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.POBirth)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DOBirth)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PassportN)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PassportDel)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PassportExp)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Townn)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nationality)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Fname)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Mname)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Lname)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.POBirth)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DOBirth)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PassportN)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PassportDel)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PassportExp)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Townn)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nationality)
+                </td>
+                <td>
+                    <div class="btn-group" role="group">
+                        <a asp-action="AddOrUpdate" asp-route-id="@item.UsagerEntityId" class="btn btn-primary mx-1"><i class="fa fa-edit"></i></a>
+                        <a asp-action="Details" asp-route-id="@item.UsagerEntityId" class="btn btn-secondary mx-1"><i class="fa fa-plus-circle"></i></a> |
+                        <a asp-action="Delete" asp-route-id="@item.UsagerEntityId" class="btn btn-danger mx-1" onclick="return confirm('@Localizer["Êtes-vous sûrs de vouloir supprimer cet enregistrement?"]')"><i class="fa fa-trash-alt"></i></a>
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

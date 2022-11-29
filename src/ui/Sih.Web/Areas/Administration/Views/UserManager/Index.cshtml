@@ -1,0 +1,103 @@
+﻿@using Sih.Entities.Administration
+@model IEnumerable<UserEntity>
+
+@{
+    ViewData["Title"] = "Index";
+    var i = 0;
+}
+@*Passage de message à l'utilisateur'*@
+<partial name="~/Views/Shared/_StatusMessage.cshtml" model=@TempData["_StatusMessage"] />
+
+<div class="card">
+    <div class="card-header bg-gradient-blue">
+        <div class="card-tools">
+            <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                <i class="fas fa-minus"></i>
+            </button>
+            <a asp-area="Helper" asp-controller="Office" asp-action="Index" class="btn btn-tool"><i class="fas fa-times"></i></a>
+        </div>
+    </div>
+    <div class="card-body">
+        <table id="example1" class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>N°</th>
+                    <th>Nom</th>
+                    <th>Login</th>
+                    <th>Confirmed</th>
+                    <th>Téléphone</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    i += 1;
+                    <tr>
+                        <td>@i</td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.NomPrenom)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Email)
+                        </td>
+                        @if (!item.EmailConfirmed)
+                        {
+                            <td>
+                                <a asp-area="Identity" asp-controller="Account" asp-action="RegisterConfirmation" asp-route-email="@item.Email" asp-route-returnUrl="/Users/UserManager/">click to confirm</a>
+                            </td>
+                        }else
+                        {
+                            <td>
+                                @Html.DisplayFor(modelItem => item.EmailConfirmed)
+                            </td>
+                        }
+                        <td>@Html.DisplayFor(modelItem => item.PhoneNumber)</td>
+                        <td>
+                            <div class="btn-group" role="group">
+                                <div class="d-grid gap-2 d-flex justify-content-center">
+                                    <a class="btn btn-secondary" asp-action="Detail" asp-route-id="@item.Id" ><i class="fa fa-trash-alt"></i>&nbsp; @Localizer["Details"]</a>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <!-- /.card-body -->
+    <div class="card-footer clearfix">
+        <div class="d-grid gap-2 d-flex justify-content-center">
+            <a asp-area="Administration" asp-controller="Office" asp-action="Index" class="btn btn-secondary"><i class="fa fa-backward"></i>&nbsp; @Localizer["Sortir"]</a> &nbsp; &nbsp;
+            <a  asp-area="Administration" asp-controller="UserManager" asp-action="Create" class="btn btn-secondary"><i class="fa fa-newspaper"></i>&nbsp; @Localizer["Nouveau"]</a>
+        </div>
+    </div>
+    <!-- /.card-footer -->
+</div>
+
+@section Styles
+{
+    @{await Html.RenderPartialAsync("/Views/Shared/AdminLTE/_DataTableStyles.cshtml");}
+}
+
+@section Scripts
+{
+    @{await Html.RenderPartialAsync("/Views/Shared/AdminLTE/_DataTableScripts.cshtml");}
+}
+
+@section ContentHeader
+{
+    <div class="col-sm-6">
+        <h1>Utilisateurs</h1>
+    </div>
+    <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item">
+                <a asp-area="Helper" asp-controller="Office" asp-action="Index">
+                    Dashboard
+                </a>
+            </li>
+            <li class="breadcrumb-item active">Liste des Utilisateurs</li>
+        </ol>
+    </div>
+}

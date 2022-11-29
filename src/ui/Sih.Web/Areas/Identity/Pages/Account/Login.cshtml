@@ -1,0 +1,62 @@
+﻿@page
+@model LoginModel
+
+@{
+    ViewData["Title"] = "Log in";
+    Layout = "~/Views/Shared/_LayoutHome.cshtml";
+}
+<div style="text-align:center">
+    <span style="font-size: 1.5rem; font-weight: bolder; color: #0460c4; margin: 0 auto; " class="">Système d'Informations du Hadj au Cameroun</span>
+    <p style="font-size: 1.5rem; font-weight: bolder; color: #0460c4; margin: 0 auto; text-align:center;" class="">SIH</p>
+
+</div>
+
+<div style="margin:0 auto; width:500px;">
+
+    <div>
+
+
+        <br />
+        <br />
+        <div style="border-radius: 9px; border-style: solid; border-color: #28a745; border-width: 1px; background-color: white ">
+            <section>
+                <form id="account" method="post">
+                    <div asp-validation-summary="All" class="text-danger"></div>
+
+                    <div class="form-group row">
+                        <div class="col-md-4 ml-3">
+                            <label style="font-weight:600;" asp-for="Input.Email" for="emailLabel">Login</label>
+                        </div>
+                        <div class="col-md-7">
+                            <input style="font-weight:600;" asp-for="Input.Email" class="form-control" />
+                            <span asp-validation-for="Input.Email" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-md-4 ml-3">
+                            <label style="font-weight:600;" asp-for="Input.Password">Mot de passe</label>
+                        </div>
+                        <div class="col-md-7">
+                            <input asp-for="Input.Password" class="form-control" />
+                            <span asp-validation-for="Input.Password" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="checkbox ml-3 col-md-12">
+                            <label style="font-weight:600;" asp-for="Input.RememberMe">
+                                <input asp-for="Input.RememberMe" />
+                                Garder ma session ouverte
+                                @*@Html.DisplayNameFor(m => m.Input.RememberMe)*@
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-md-12 text-right">
+                            <button type="submit" class="btn btn-success mr-4">Connexion</button>
+                        </div>
+                    </div>
+                </form>
+            </section>
+        </div>
+    </div>
+</div>

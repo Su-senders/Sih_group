@@ -1,0 +1,134 @@
+﻿@model Sih.Entities.Pelerins.UsagerEntity
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer Localizer
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<p class="titre">@Localizer["Ajouter ou mettre à jour un Pelerin"]</p>
+
+<br />
+<hr style="height:2px;background-color:midnightblue" />
+<div class="row">
+    <div class="col-md-3">
+        <img src="~/img/dattes.png" width="125" height="125" style="position:absolute" />
+    </div>
+    <div class="col-md-9">
+        <div style="border-style:groove; border-radius:15px">
+            <form asp-action="AddOrUpdate">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="UsagerEntityId" />
+                <div class="form-group row">
+                    <div class="col-md-4 ml-2">
+                        <label asp-for="Fname" class="control-label"></label>
+                    </div>
+                    <div class="col-md-6 ml-2">
+                        <input asp-for="Fname" class="form-control" />
+                        <span asp-validation-for="Fname" class="text-danger"></span>
+                    </div>
+                </div>
+               
+                <div class="form-group row">
+                    <div class="col-md-4 ml-2">
+                        <label asp-for="Mname" class="control-label"></label>
+                    </div>
+                        
+                    <div class="col-md-6 ml-2">
+                        <input asp-for="Mname" class="form-control" />
+                        <span asp-validation-for="Mname" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-md-4 ml-2">
+                        <label asp-for="Lname" class="control-label"></label>
+                    </div>
+                    <div class="col-md-6 ml-2">
+                        <input asp-for="Lname" class="form-control" />
+                        <span asp-validation-for="Lname" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-4 ml-2">
+                        <label asp-for="POBirth" class="control-label"></label>
+                    </div>
+                    <div class="col-md-6 ml-2">
+                        <input asp-for="POBirth" class="form-control" />
+                        <span asp-validation-for="POBirth" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-4 ml-2">
+                        <label asp-for="DOBirth" class="control-label"></label>
+                    </div>
+                    <div class="col-md-6 ml-2">
+                        <input asp-for="DOBirth" class="form-control" />
+                        <span asp-validation-for="DOBirth" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-4 ml-2">
+                        <label asp-for="PassportN" class="control-label"></label>
+                    </div>
+                    <div class="col-md-6 ml-2">
+                        <input asp-for="PassportN" class="form-control" />
+                        <span asp-validation-for="PassportN" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-4 ml-2">
+                        <label asp-for="PassportDel" class="control-label"></label>
+                    </div>
+                    <div class="col-md-6 ml-2">
+                        <input asp-for="PassportDel" class="form-control" />
+                        <span asp-validation-for="PassportDel" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-4 ml-2">
+                        <label asp-for="PassportExp" class="control-label"></label>
+                    </div>
+                    <div class="col-md-6 ml-2">
+                        <input asp-for="PassportExp" class="form-control" />
+                        <span asp-validation-for="PassportExp" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-4 ml-2">
+                        <label asp-for="Townn" class="control-label"></label>
+                    </div>
+                    <div class="col-md-6 ml-2">
+                        <input asp-for="Townn" class="form-control" />
+                        <span asp-validation-for="Townn" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-4 ml-2">
+                        <label asp-for="Nationality" class="control-label"></label>
+                    </div>
+                    <div class="col-md-6 ml-2">
+                        <input asp-for="Nationality" class="form-control" />
+                        <span asp-validation-for="Nationality" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-8 text-center row">
+                        <div class="col">
+                            <input type="submit" value="@Localizer["Ajouter ou mettre à jour"]" class="btn btn-outline-primary" />
+                        </div>
+                        <div class="col">
+                            <a asp-action="Index" class="btn btn-secondary">@Localizer["Afficher la liste"]</a>
+                        </div>
+                    </div>
+                </div>
+</form>
+        </div>
+    </div>
+</div>
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

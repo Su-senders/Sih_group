@@ -1,0 +1,65 @@
+﻿@model IEnumerable<Sih.Entities.Pelerins.HadjEntity>
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer Localizer
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<p class="titre">@Localizer["Liste des éditions de Hadjs enregitrés"]</p>
+<br />
+<div>
+    <p>
+        <a asp-action="AddOrUpdate" class="btn btn-outline-primary">@Localizer["Nouveau"]</a>
+    </p>
+</div>
+<hr style="height:2px;background-color:midnightblue" />
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Edition)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Datedebut)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Datefin)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Quota)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cout)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Edition)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Datedebut)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Datefin)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Quota)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Cout)
+                </td>
+                <td>
+                    <a asp-action="AddOrUpdate" asp-route-id="@item.HadjEntityId" class="btn btn-primary mx-1"><i class="fa fa-edit"></i></a>
+                    <a asp-action="Delete" asp-route-id="@item.HadjEntityId" class="btn btn-danger mx-1" onclick="return confirm('@Localizer["Êtes-vous sûrs de vouloir supprimer cet enregistrement?"]')"><i class="fa fa-trash-alt"></i></a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

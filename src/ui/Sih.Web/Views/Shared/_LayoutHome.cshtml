@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - SIH</title>
+
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+
+    <link href="~/lib/font-awesome/css/all.css" rel="stylesheet" />
+    @*<link href="~/img/icons/css/all.css" rel="stylesheet">*@ @*ce css n'existe pas *@
+
+    @*<link href="~/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" />*@ @*c'est cette ligne qui fait bugger*@
+
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/Style.css" />
+</head>
+
+@*<body style="background-color:cornsilk">*@
+<body>
+    <header>
+        <div style="padding:50px; font-size:20px;">
+            <partial name="_Header" />
+        </div>
+    </header>
+
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2022 - MINAT - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>  <a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

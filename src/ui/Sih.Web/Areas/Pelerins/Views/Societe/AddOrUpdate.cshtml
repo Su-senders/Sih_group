@@ -1,0 +1,90 @@
+﻿@model Sih.Entities.Pelerins.SocieteEntity
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer Localizer
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<p class="titre">@Localizer["Ajouter ou mettre à jour une Société"]</p>
+
+<br />
+<hr style="height:2px;background-color:midnightblue" />
+<div class="row">
+    <div class="col-md-3">
+        <img src="~/img/dattes.png" width="125" height="125" style="position:absolute" />
+    </div>
+    <div class="col-md-9">
+        <div style="border-style:groove; border-radius:15px">
+            <form asp-action="AddOrUpdate">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="SociteEntityId" />
+                <div class="form-group row">
+                    <div class="col-md-4 ml-2">
+                        <label asp-for="Rsoc" class="control-label"></label>
+                    </div>
+                    <div class="col-md-6 ml-2">
+                        <input asp-for="Rsoc" class="form-control" />
+                        <span asp-validation-for="Rsoc" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-md-4 ml-2">
+                        <label asp-for="BP" class="control-label"></label>
+                    </div>
+                    <div class="col-md-6 ml-2">
+                        <input asp-for="BP" class="form-control" />
+                        <span asp-validation-for="BP" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-4 ml-2">
+                        <label asp-for="Tel" class="control-label"></label>
+                    </div>
+                    <div class="col-md-6 ml-2">
+                        <input asp-for="Tel" class="form-control" />
+                        <span asp-validation-for="Tel" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-4 ml-2">
+                        <label asp-for="Hqter" class="control-label"></label>
+                    </div>
+                    <div class="col-md-6 ml-2">
+                        <input asp-for="Hqter" class="form-control" />
+                        <span asp-validation-for="Hqter" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label asp-for="EncadreurEntityId" class="control-label"></label>
+                    
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-4 ml-2">
+                        <label asp-for="EncadreurEntityId" class="control-label"></label>
+                    </div>
+                    <div class="col-md-6 ml-2">
+                        <select asp-for="EncadreurEntityId" class="form-control" asp-items="ViewBag.EncadreurEntityId"></select>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-8 text-center row">
+                        <div class="col">
+                            <input type="submit" value="@Localizer["Ajouter ou mettre à jour"]" class="btn btn-outline-primary" />
+                        </div>
+                        <div class="col">
+                            <a asp-action="Index" class="btn btn-secondary">@Localizer["Afficher la liste"]</a>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+   
+
+    @section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }

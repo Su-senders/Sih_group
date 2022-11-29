@@ -1,0 +1,78 @@
+﻿@model IEnumerable<Sih.Entities.Gestion.InscriptionEntity>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="AddOrUpdate">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Code)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Standing)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Etatpaiement)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Etat)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateIns)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Hadj)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Pelerin)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Encadreur)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Code)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Standing)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Etatpaiement)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Etat)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateIns)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Hadj.Edition)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Pelerin.Fname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Encadreur.Dtownn)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.InscriptionEntityId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.InscriptionEntityId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.InscriptionEntityId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

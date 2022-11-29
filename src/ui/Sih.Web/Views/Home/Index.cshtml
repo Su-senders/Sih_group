@@ -1,0 +1,50 @@
+﻿
+@{
+    ViewData["Title"] = "Home page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="border-bottom-0" style="background-color:yellowgreen;background-image:url('../img/photo_ministre2.png');background-repeat:no-repeat;background-position:right center;background-size:contain">
+
+    <span style="color: white; font-size: 2.5rem;" ;display:inline-block>SIH:</span>
+    <span style="font-family: 'Edwardian Script ITC'; font-size:2.5rem; color: white; display: inline-block">Système d'Information du Hadj au Cameroun</span>
+    <h4 style="color: yellowgreen" ;display:inline-block>SIH:</h4>
+</div>
+<div class="row panel">
+    <div id="themes" class="col-sm-4">
+        <div class="border-bottom" style="background-color: burlywood; font-family: Forte">
+            <div>
+                <h3 style="color:white">Informations Générales sur le Hadj @DateTime.Now.Year</h3>
+                <p style="color:white; text-align:justify">Chaque année le Ministère de l'Administration Territoriale à travers la Commission nationale du Hadj organise et supervise le bon déroulement du pèlerinage musulman à la Mecque.</p>
+                <p><a class="btn btn-default" href="#" style="background-color:brown;color:white">En savoir plus &raquo;</a></p>
+            </div>
+        </div>
+        <div class="border-bottom" style="background-color: burlywood; font-family: Forte">
+            <div>
+                <h3 style="color:white">Comment participer au Hadj?</h3>
+                <p style="color:white; text-align:justify">
+                    Toute personne physique ou tout représentant légal d’une personne morale désirant convoyer et encadrer les pèlerins camerounais aux Lieux Saints de l’Islam au titre du Hadj doit être agréé en cette qualité.
+                    En vue de l’obtention de l’agrément, les personnes susmentionnées doivent respecter les conditions suivantes…
+                </p>
+                <p><a class="btn btn-default" href="/Home/infoencadreurs" style="background-color:brown;color:white">En savoir plus &raquo;</a></p>
+            </div>
+        </div>
+        <div class="border-bottom" style="background-color: burlywood; font-family: Forte">
+            <div>
+                <h3 style="color: white">Avis aux encadreurs</h3>
+                <p style="color:white; text-align:justify">Tout musulman sans distiction aucune, habitant en terre cammerounaise, a le droit de s'incrire auprès d'un encadreur dûment compétant de sa Région d'habitation, en vue de participer au Hadj.</p>
+                <p><a class="btn btn-default" href="/Home/infopelerins" style="background-color:brown;color:white">En savoir plus &raquo;</a></p>
+            </div>
+        </div>
+        <div class="well" style="background-color: burlywood; font-family: Forte">
+            <div>
+                <h3 style="color:white">Comment devenir encadreur?</h3>
+                <p style="color:white; text-align:justify">Tout musulman sans distiction aucune, habitant en terre cammerounaise, a le droit de s'incrire auprès d'un encadreur dûment compétant de sa Région d'habitation, en vue de participer au Hadj.</p>
+                <p><a class="btn btn-default" href="/Home/infopelerins" style="background-color:brown;color:white">En savoir plus &raquo;</a></p>
+            </div>
+        </div>
+    </div>
+    <div id="logo" class="col-sm-6">
+        <img src="~/img/logo_geha.jpg" />
+    </div>
+</div>

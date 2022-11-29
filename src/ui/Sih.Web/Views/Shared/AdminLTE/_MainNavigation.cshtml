@@ -1,0 +1,151 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using Sih.Entities.Administration
+@using Sih.Web.Helper
+@using Microsoft.AspNetCore.Mvc.Localization
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@inject SignInManager<UserEntity> SignInManager
+@inject UserManager<UserEntity> UserManager
+@inject IViewLocalizer Localizer
+
+
+<aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <!-- Brand Logo -->
+    <a asp-area="Helper" asp-controller="Office" asp-action="Index" class="brand-link">
+        <img src="~/img/armoiries.png" alt="Armoirie" class="brand-image img-circle elevation-3">
+        @*<span class="brand-text font-weight-light">Hadj</span>*@
+    </a>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+
+        <nav class="mt-2">
+            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                <li class="nav-item">
+                    <a href="#" class="nav-link active">
+                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                        <p>
+                            Session
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a asp-area="Administration" asp-controller="Office" asp-action="Index" asp- class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Dashboard</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <form class="nav-link" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/Account/Lockout", new { area = "Identity" })" method="post">
+                                <button type="submit" class="btn btn-link text-danger p-0"><i class="far fa-circle nav-icon"></i>Fermer la session</button>
+                            </form>
+                        </li>
+                    </ul>
+                </li>
+
+                @if (User.IsInRole("AdminIdentity"))
+                {
+                    <li class="nav-item">
+                        <a asp-area="Administration" asp-controller="RoleManager" asp-action="Index" class="nav-link">
+                            @*<i class="nav-icon fas fa-th"></i> *@ <i class="nav-icon fas fa-tachometer-alt"></i>
+                            <p>
+                                Ajouter un Rôles
+                                <span class="right badge badge-danger">Dev only</span>
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item menu">
+                        <a href="#" class="nav-link active">
+                            <i class="nav-icon fa fa-cogs"></i>
+                            <p>
+                                Users
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a id="manage" asp-area="Identity" asp-page="/Account/Manage/Index" class="nav-link" title="@UserManager.GetUserName(User)">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Mon profil</p>
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a asp-area="Administration" asp-controller="UserManager" asp-action="Index" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Utilisateur</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a asp-area="Administration" asp-controller="UserRoles" asp-action="Index" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p> Roles </p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a asp-area="Administration" asp-controller="Notifications" asp-action="Index" class="nav-link @Url.MakeActiveClass("Helper", "Notifications", "Index")">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Journalisation</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                }
+
+                @if (User.IsInRole("AdminBases"))
+                {
+                    <li class="nav-item menu">
+                        <a href="#" class="nav-link active">
+                            <i class="nav-icon fas fa-book"></i>
+                            <p>
+                                Menu
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a asp-area="Administration" asp-controller="Notifications" asp-action="Index" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Sous menu 1</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a asp-area="Administration" asp-controller="Notifications" asp-action="Index" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Sous menu 1</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                }
+
+                <li class="nav-item">
+                    <a href="#" class="nav-link active">
+                        <i class="nav-icon fas fa-book-open"></i>
+                        <p>
+                            Consultation/Edition
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a asp-area="Administration" asp-controller="Notifications" asp-action="Index" class="nav-link">
+                                <i class="fa fa-car" aria-hidden="true"></i>
+                                <p> One </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a asp-area="Administration" asp-controller="Notifications" asp-action="Index" class="nav-link">
+                                <i class="fa fa-car" aria-hidden="true"></i>
+                                <p> Two </p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+            </ul>
+        </nav>
+    </div>
+    <!-- /.sidebar -->
+</aside>

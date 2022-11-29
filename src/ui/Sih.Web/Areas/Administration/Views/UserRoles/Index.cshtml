@@ -1,0 +1,31 @@
+﻿@using Sih.Web.Areas.Administration.Models
+@model List<UserRolesViewModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>@Localizer["Profil utilisateur"]</h1>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>@Localizer["Nom"]</th>
+            <th>@Localizer["Email"]</th>
+            <th>@Localizer["Roles"]</th>
+            <th>@Localizer["Action"]</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in Model)
+        {
+            <tr>
+                <td>@user.NomPrenom</td>
+                <td>@user.Email</td>
+                <td>@string.Join(" , ", user.Roles.ToList())</td>
+                <td>                   
+                    <a asp-controller="UserRoles" asp-action="Manage" asp-route-userId="@user.UserId" class="btn btn-primary mx-1"><i class="fa fa-edit"></i></a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

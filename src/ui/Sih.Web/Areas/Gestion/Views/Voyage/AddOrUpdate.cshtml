@@ -1,0 +1,50 @@
+﻿@model Sih.Entities.Gestion.VoyageEntity
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Create</h1>
+
+<h4>VoyageEntity</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="AddOrUpdate">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="VoyageEntityId" />
+            <div class="form-group">
+                <label asp-for="VolEntityId" class="control-label"></label>
+                <input asp-for="VolEntityId" class="form-control" />
+                <span asp-validation-for="VolEntityId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UsagerEntityId" class="control-label"></label>
+                <input asp-for="UsagerEntityId" class="form-control" />
+                <span asp-validation-for="UsagerEntityId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Direction" class="control-label"></label>
+                <input asp-for="Direction" class="form-control" />
+                <span asp-validation-for="Direction" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Datedepart" class="control-label"></label>
+                <input asp-for="Datedepart" class="form-control" />
+                <span asp-validation-for="Datedepart" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
