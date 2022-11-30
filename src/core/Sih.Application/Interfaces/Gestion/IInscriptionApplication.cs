@@ -11,10 +11,10 @@ namespace Sih.Application.Interfaces.Gestion
     public interface IInscriptionApplication : IGenericApplication<InscriptionEntity>
     {        
         //liste de tous les futures pelerins inscrits
-        Task<List<UsagerEntity>> Extraire_donnees_Badges(int id);
+        Task<IEnumerable<UsagerEntity>> Extraire_donnees_Badges(int id);
         // Task<InscriptionEntity> PositionDossier(string PassportN);
         Task<IEnumerable<UsagerEntity>> Afficher_ListPelerins_inscrits(int idh);
         //liste de tous les futures pelerins inscrits pour un encadreur
-        Task<List<UsagerEntity>> Afficher_ListPelerins_inscrits_encadreur(int idh, int? ide);
+        Task<IEnumerable<UsagerEntity>> Afficher_ListPelerins_inscrits_encadreur(int? idh, int ide);
     }
 }

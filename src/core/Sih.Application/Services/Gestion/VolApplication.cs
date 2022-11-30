@@ -37,16 +37,7 @@ namespace Sih.Application.Services.Gestion
             await _context.Modifier(entity);
         }
 
-        public Task<List<UsagerEntity>> Remplir_vol(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        ////public async Task<List<UsagerEntity>> Remplir_vol(int id)
-        ////{
-        ////    return await _context.Remplir_vol(id);
-        ////}
-
+       
         public async Task Supprimer(VolEntity entity)
         {
             await _context.Supprimer(entity);

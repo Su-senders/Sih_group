@@ -21,14 +21,34 @@ namespace Sih.Application.Services.Gestion
 
         public Task<IEnumerable<UsagerEntity>> Afficher_ListPelerins_inscrits(int idh)
         {
-            IEnumerable<UsagerEntity> req = _context.GetAll().Result.Where(l => (l.Etatpaiement == Etat_Paiement.Solde) && (l.Hadj.Datefin.Year == DateTime.Now.Year)).Select(p=>p.Pelerin);
+            IEnumerable<UsagerEntity> req = _context.GetAll().Result
+                .Where(l => (l.Etatpaiement == Etat_Paiement.Solde) 
+                && (l.Hadj.Datefin.Year == DateTime.Now.Year)).Select(p=>p.Pelerin);
 
             return Task.FromResult(req);
         }
 
-        public Task<List<UsagerEntity>> Afficher_ListPelerins_inscrits_encadreur(int idh, int? ide)
+        public Task<IEnumerable<UsagerEntity>> Afficher_ListPelerins_inscrits_encadreur(int? idh, int ide)
         {
-            throw new NotImplementedException();
+            IEnumerable<UsagerEntity> req;
+                if (idh==0)
+                {
+                    req = _context.GetAll().Result
+                                           .Where(l => (l.Etatpaiement == Etat_Paiement.Solde)
+                                            && (l.Hadj.Datefin.Year == DateTime.Now.Year)
+                                            && (l.EncadreurEntityId == ide))
+                                            .Select(p => p.Pelerin);
+                    return Task.FromResult(req);
+                }
+                else
+                {
+                    req = _context.GetAll().Result
+                                           .Where(l => (l.Etatpaiement == Etat_Paiement.Solde)
+                                            && (l.Hadj.Datefin.Year == DateTime.Now.Year)
+                                            && (l.EncadreurEntityId == ide))
+                                            .Select(p => p.Pelerin);
+                    return Task.FromResult(req);
+                }
         }
 
         public async Task Ajouter(InscriptionEntity entity)
@@ -36,9 +56,14 @@ namespace Sih.Application.Services.Gestion
             await _context.Ajouter(entity);
         }
 
-        public Task<List<UsagerEntity>> Extraire_donnees_Badges(int id)
+        public Task<IEnumerable<UsagerEntity>> Extraire_donnees_Badges(int id)
         {
-            throw new NotImplementedException();
+            IEnumerable<UsagerEntity> req = _context.GetAll().Result
+                                            .Where(l => (l.Etat == Etat_Traitement.Visa 
+                                            || l.Etat==Etat_Traitement.VolAller)
+                                             && (l.Hadj.HadjEntityId == id))
+                                             .Select(p => p.Pelerin);
+            return Task.FromResult(req);
         }
 
         public async Task<List<InscriptionEntity>> GetAll()

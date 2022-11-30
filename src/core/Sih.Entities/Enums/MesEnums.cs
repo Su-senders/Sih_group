@@ -7,6 +7,11 @@
             Solde,
             incomplet
         }
+        public enum Direction
+        {
+            Aller,
+            Retour
+        }
         public enum Etat_Traitement
         {
             Enregister,

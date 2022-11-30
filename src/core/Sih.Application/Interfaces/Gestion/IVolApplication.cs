@@ -10,6 +10,6 @@ namespace Sih.Application.Interfaces.Gestion
 {
     public interface IVolApplication:IGenericApplication<VolEntity>
     {
-        Task<List<UsagerEntity>> Remplir_vol(int id);
+        
     }
 }

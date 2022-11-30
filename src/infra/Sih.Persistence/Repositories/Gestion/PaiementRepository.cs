@@ -23,6 +23,7 @@ namespace Sih.Persistence.Repositories.Gestion
 
             return await fabrique.Paiements
                             .Include(i => i.Inscription)
+                            .ThenInclude(i=>i.Pelerin)
                             .ToListAsync();
         }
 
