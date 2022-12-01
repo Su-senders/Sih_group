@@ -1,61 +1,85 @@
 ﻿@model Sih.Entities.Gestion.PieceJointesEntity
-
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer Localizer
 @{
     ViewData["Title"] = "Create";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Create</h1>
+<p class="titre">@Localizer["Ajouter ou mettre à jour une édition de Hadj"]</p>
 
-<h4>PieceJointesEntity</h4>
-<hr />
+<br />
+<hr style="height:2px;background-color:midnightblue" />
 <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-3">
+        <img src="~/img/dattes.png" width="125" height="125" style="position:absolute" />
+    </div>
+    <div class="col-md-9">
+        <div style="border-style:groove; border-radius:15px">
         <form asp-action="AddOrUpdate">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="PieceJointesEntityId" />
-            <div class="form-group">
-                <label asp-for="FileName" class="control-label"></label>
-                <input asp-for="FileName" class="form-control" />
-                <span asp-validation-for="FileName" class="text-danger"></span>
+            <div class="form-group row">
+                <div class="col-md-4 ml-2">
+                    <label asp-for="FileName" class="control-label"></label>
+                    <input asp-for="FileName" class="form-control" />
+                    <span asp-validation-for="FileName" class="text-danger"></span>
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="FileContentType" class="control-label"></label>
-                <input asp-for="FileContentType" class="form-control" />
-                <span asp-validation-for="FileContentType" class="text-danger"></span>
+            <div class="form-group row">
+                <div class="col-md-4 ml-2">
+                    <label asp-for="FileContentType" class="control-label"></label>
+                    <input asp-for="FileContentType" class="form-control" />
+                    <span asp-validation-for="FileContentType" class="text-danger"></span>
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="FileSize" class="control-label"></label>
-                <input asp-for="FileSize" class="form-control" />
-                <span asp-validation-for="FileSize" class="text-danger"></span>
+            <div class="form-group row">
+                <div class="col-md-4 ml-2">
+                    <label asp-for="FileSize" class="control-label"></label>
+                    <input asp-for="FileSize" class="form-control" />
+                    <span asp-validation-for="FileSize" class="text-danger"></span>
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="FileNumerise" class="control-label"></label>
-                <input asp-for="FileNumerise" class="form-control" />
-                <span asp-validation-for="FileNumerise" class="text-danger"></span>
+            <div class="form-group row">
+                <div class="col-md-4 ml-2">
+                    <label asp-for="FileNumerise" class="control-label"></label>
+                    <input asp-for="FileNumerise" class="form-control" />
+                    <span asp-validation-for="FileNumerise" class="text-danger"></span>
+                </div>
             </div>
             <div class="form-group form-check">
                 <label class="form-check-label">
                     <input class="form-check-input" asp-for="Qualite" /> @Html.DisplayNameFor(model => model.Qualite)
                 </label>
             </div>
-            <div class="form-group">
-                <label asp-for="InscriptionEntityId" class="control-label"></label>
-                <select asp-for="InscriptionEntityId" class="form-control" asp-items="ViewBag.InscriptionEntityId"></select>
+            <div class="form-group row">
+                <div class="col-md-4 ml-2">
+                    <label asp-for="InscriptionEntityId" class="control-label"></label>
+                    <select asp-for="InscriptionEntityId" class="form-control" asp-items="ViewBag.InscriptionEntityId"></select>
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="PiecesTypeEntityId" class="control-label"></label>
-                <select asp-for="PiecesTypeEntityId" class="form-control" asp-items="ViewBag.PiecesTypeEntityId"></select>
+            <div class="form-group row">
+                <div class="col-md-4 ml-2">
+                    <label asp-for="PiecesTypeEntityId" class="control-label"></label>
+                    <select asp-for="PiecesTypeEntityId" class="form-control" asp-items="ViewBag.PiecesTypeEntityId"></select>
+                </div>
             </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+            <div class="form-group row">
+                <div class="col-8 text-center row">
+                    <div class="col">
+                        <input type="submit" value="Create" class="btn btn-primary" />
+                    </div>
+                    <div class="col">
+                        <a asp-action="Index" class="btn btn-secondary">@Localizer["Afficher la liste"]</a>
+                    </div>
+                </div>
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    
 </div>
 
 @section Scripts {
