@@ -1,35 +1,48 @@
 ﻿@model Sih.Entities.Gestion.PaiementEntity
-
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer Localizer
 @{
     ViewData["Title"] = "Create";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Create</h1>
+<p class="titre">@Localizer["Ajouter ou mettre à jour une édition de Hadj"]</p>
 
-<h4>PaiementEntity</h4>
-<hr />
+<br />
+<hr style="height:2px;background-color:midnightblue" />
 <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-3">
+        <img src="~/img/dattes.png" width="125" height="125" style="position:absolute" />
+    </div>
+    <div class="col-md-9">
+        <div style="border-style:groove; border-radius:15px">
         <form asp-action="AddOrUpdate">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="PaiementEntityId" />
-            <div class="form-group">
-                <label asp-for="Dateversement" class="control-label"></label>
-                <input asp-for="Dateversement" class="form-control" />
-                <span asp-validation-for="Dateversement" class="text-danger"></span>
+            <div class="form-group row">
+                <div class="col-md-4 ml-2">
+                    <label asp-for="Dateversement" class="control-label"></label>
+                    <input asp-for="Dateversement" class="form-control" />
+                    <span asp-validation-for="Dateversement" class="text-danger"></span>
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="Montant" class="control-label"></label>
-                <input asp-for="Montant" class="form-control" />
-                <span asp-validation-for="Montant" class="text-danger"></span>
+            <div class="form-group row">
+                <div class="col-md-6 ml-2">
+                    <label asp-for="Montant" class="control-label"></label>
+                    <input asp-for="Montant" class="form-control" />
+                    <span asp-validation-for="Montant" class="text-danger"></span>
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="InscriptionEntityId" class="control-label"></label>
-                <select asp-for="InscriptionEntityId" class="form-control" asp-items="ViewBag.InscriptionEntityId"></select>
+            <div class="form-group row">
+                <div class="col-md-6 ml-2">
+                    <label asp-for="InscriptionEntityId" class="control-label"></label>
+                    <select asp-for="InscriptionEntityId" class="form-control" asp-items="ViewBag.InscriptionEntityId"></select>
+                </div>
             </div>
-            <div class="form-group">
+            <div class="form-group row">
+                <div class="col-md-6 ml-2">
                 <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
             </div>
         </form>
     </div>
